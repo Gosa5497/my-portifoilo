@@ -561,7 +561,7 @@
 
 			<div class="row no-gutters block-9">
 				<div class="col-md-6 order-md-last d-flex">
-					<form action="https://formspree.io/f/xnjjnqon" method="POST"
+					<form id="contact-form" action="https://formspree.io/f/xnjjnqon" method="POST"
 						class="bg-light p-4 p-md-5 contact-form">
 						<div class="form-group">
 							<input type="text" name="name" class="form-control" placeholder="Your Name" required>
@@ -577,8 +577,10 @@
 								required></textarea>
 						</div>
 						<div class="form-group">
-							<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+							<input type="submit" id="contact-form-button" value="Send Message"
+								class="btn btn-primary py-3 px-5">
 						</div>
+						<div id="contact-form-status" class="mt-3"></div>
 					</form>
 
 				</div>
@@ -691,6 +693,50 @@
 	<script src="js/scrollax.min.js"></script>
 
 	<script src="js/main.js"></script>
+
+	<script>
+		var form = document.getElementById("contact-form");
+
+		async function handleSubmit(event) {
+			event.preventDefault();
+			var status = document.getElementById("contact-form-status");
+			var button = document.getElementById("contact-form-button");
+			var data = new FormData(event.target);
+
+			button.disabled = true;
+			button.value = "Sending...";
+
+			fetch(event.target.action, {
+				method: form.method,
+				body: data,
+				headers: {
+					'Accept': 'application/json'
+				}
+			}).then(response => {
+				if (response.ok) {
+					status.innerHTML = "<div class='alert alert-success'>Thanks! Your message has been sent successfully.</div>";
+					form.reset();
+					button.disabled = false;
+					button.value = "Send Message";
+				} else {
+					response.json().then(data => {
+						if (Object.hasOwn(data, 'errors')) {
+							status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+						} else {
+							status.innerHTML = "<div class='alert alert-danger'>Oops! There was a problem submitting your form.</div>";
+						}
+						button.disabled = false;
+						button.value = "Send Message";
+					})
+				}
+			}).catch(error => {
+				status.innerHTML = "<div class='alert alert-danger'>Oops! There was a problem submitting your form.</div>";
+				button.disabled = false;
+				button.value = "Send Message";
+			});
+		}
+		form.addEventListener("submit", handleSubmit)
+	</script>
 
 </body>
 
