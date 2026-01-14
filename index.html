@@ -101,7 +101,8 @@
 								<h2 class="mb-4">Django Backend Engineer | AI Institute Developer</h2>
 								<p>
 									<a href="https://www.upwork.com/freelancers/~01a1e0b7cc7fe93991" target="_blank"
-										class="btn btn-primary py-3 px-4" style="position: relative; z-index: 999;">
+										class="btn btn-primary py-3 px-4 upwork-btn"
+										style="position: relative; z-index: 999;">
 										HIRE ME ON UPWORK
 									</a>
 									<a href="#projects-section" class="btn btn-white btn-outline-white py-3 px-4">
@@ -129,7 +130,8 @@
 								<h1 class="mb-4 mt-3">I'm a <span>Django Developer</span> based in Ethiopia</h1>
 								<p>
 									<a href="https://www.upwork.com/freelancers/~01a1e0b7cc7fe93991" target="_blank"
-										class="btn btn-primary py-3 px-4" style="position: relative; z-index: 999;">
+										class="btn btn-primary py-3 px-4 upwork-btn"
+										style="position: relative; z-index: 999;">
 										HIRE ME ON UPWORK
 									</a>
 									<a href="#projects-section" class="btn btn-white btn-outline-white py-3 px-4">
@@ -536,8 +538,8 @@
 					<p> "committed to providing high-quality results while taking the necessary time to meet your
 						needs."</p>
 					<p class="mb-0"><a href="https://www.upwork.com/freelancers/~01a1e0b7cc7fe93991"
-							rel="noopener noreferrer" target="_blank" class="btn btn-primary py-3 px-5">HIRE ME ON
-							UPWORK</a></p>
+							rel="noopener noreferrer" target="_blank" class="btn btn-primary py-3 px-5 upwork-btn">HIRE
+							ME ON UPWORK</a></p>
 				</div>
 			</div>
 		</div>
@@ -588,7 +590,8 @@
 							<span class="icon-globe"></span>
 						</div>
 						<h3 class="mb-4">Upwork</h3>
-						<p><a href="https://www.upwork.com/freelancers/~01a1e0b7cc7fe93991" target="_blank">View
+						<p><a href="https://www.upwork.com/freelancers/~01a1e0b7cc7fe93991" target="_blank"
+								class="upwork-btn">View
 								Profile</a></p>
 					</div>
 				</div>
@@ -643,7 +646,7 @@
 							<li class="ftco-animate"><a href="https://github.com/Gosa5497" target="_blank"><span
 										class="icon-github"></span></a></li>
 							<li class="ftco-animate"><a href="https://www.upwork.com/freelancers/~01a1e0b7cc7fe93991"
-									target="_blank"><span class="icon-upwork"></span></a></li>
+									target="_blank" class="upwork-btn"><span class="icon-upwork"></span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -772,6 +775,14 @@
 			});
 		}
 		form.addEventListener("submit", handleSubmit)
+	</script>
+
+	<script>
+		// Robust Click Handler for Upwork Buttons
+		$(document).on('click', '.upwork-btn', function (e) {
+			window.open('https://www.upwork.com/freelancers/~01a1e0b7cc7fe93991', '_blank');
+			return false;
+		});
 	</script>
 
 </body>
